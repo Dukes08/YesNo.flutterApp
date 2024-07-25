@@ -27,7 +27,7 @@ class _ChatView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Column(
           children: [
             Expanded(
@@ -35,12 +35,12 @@ class _ChatView extends StatelessWidget {
                 itemCount: 100,
                 itemBuilder: (context, index) {
                   return (index % 2 == 0)
-                      ? FutureMessageBubble()
-                      : MyMessageBubble();
+                      ? const FutureMessageBubble()
+                      : const MyMessageBubble();
                 },
               ),
             ),
-            MessageFieldBox(),
+            const MessageFieldBox(),
           ],
         ),
       ),
