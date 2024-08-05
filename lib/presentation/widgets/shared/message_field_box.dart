@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MessageFieldBox extends StatelessWidget {
-  const MessageFieldBox({super.key});
+  final ValueChanged<String> onValue;
+  const MessageFieldBox({super.key, required this.onValue});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,14 @@ class MessageFieldBox extends StatelessWidget {
       suffixIcon: IconButton(
         icon: const Icon(Icons.send_outlined),
         onPressed: () {
-          final textValue = textController;
+          //! This works but it is not the way it should be beacuse the state does not render on time
+          // chatProvider.messageList.add(
+          //   Message(text: textController.text, fromWho: FromWho.me),
+          // );
+          //! This works but is not the best way to implement the method.
+          final textValue = textController.text;
+          textValue.isEmpty ? '' : onValue(textValue);
+
           textController.clear();
         },
       ),
